@@ -3,7 +3,7 @@ source "https://rubygems.org"
 gem "csv"
 gem "bigdecimal"
 gem "ostruct"
-gem "minimal-mistakes-jekyll"
+gem "minimal-mistakes-jekyll", "~> 4.24.0"
 gem "faraday-retry"
 gem "liquid", "~> 4.0.4"
 
@@ -21,5 +21,6 @@ group :jekyll_plugins do
   gem "jekyll-feed"
   gem "jemoji"
   gem "jekyll-include-cache"
+  gem "jekyll-remote-theme"
   gem "jekyll-algolia"
 end
