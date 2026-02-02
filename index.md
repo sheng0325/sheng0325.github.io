@@ -10,8 +10,8 @@ author_profile: true
 
 ## 教育背景
 
-- **2016-2021**：吉隆坡中华独立中学
-- **2022-2026**：北京理工大学，计算机科学与技术专业
+- **2016-2021**：吉隆坡中华独立中学（高中）
+- **2022-2026**：北京理工大学，计算机科学与技术专业（本科）
 
 ## 语言能力
 
@@ -26,4 +26,4 @@ author_profile: true
 - **GitHub**: [sheng0325](https://github.com/sheng0325)
 - **LinkedIn**: [Wen Sheng Chan](https://www.linkedin.com/in/wen-sheng-chan-70b073378/)
 
-感谢你的访问！
+<p style="color: #660874; text-align: center; font-weight: 600; margin-top: 2rem;">感谢你的访问！</p>

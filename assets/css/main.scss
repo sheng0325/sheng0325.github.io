@@ -199,6 +199,57 @@ h3 {
   border-left: 4px solid #b39ddb;
 }
 
+/* 导航菜单活动状态样式 */
+
+/* 作者头像保持圆形 */
+.author__avatar {
+  border-radius: 50% !important;
+}
+
+.author__avatar img {
+  border-radius: 50% !important;
+  width: 100px !important;
+  height: 100px !important;
+  object-fit: cover;
+}
+
+.greedy-nav__toggle:hover {
+  background-color: transparent;
+}
+
+.greedy-nav a {
+  transition: color 0.2s ease;
+}
+
+.greedy-nav a:hover,
+.greedy-nav a.current {
+  color: #660874 !important; /* 清华紫 */
+}
+
+.greedy-nav a.current {
+  font-weight: 600;
+  position: relative;
+}
+
+.greedy-nav a.current::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 2px;
+  background-color: #660874;
+  border-radius: 2px;
+}
+
+/* 移动端导航隐藏菜单的居中样式 */
+.greedy-nav .hidden-links a.current {
+  text-align: center;
+  display: block;
+  padding: 8px 16px;
+}
+
 /* Dark mode overrides */
 @media (prefers-color-scheme: dark) {
   .competition-card {
