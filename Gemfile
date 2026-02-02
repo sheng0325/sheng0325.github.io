@@ -1,5 +1,11 @@
 source "https://rubygems.org"
 
+gem "csv"
+gem "bigdecimal"
+gem "ostruct"
+gem "minimal-mistakes-jekyll"
+gem "faraday-retry"
+
 gem "github-pages", group: :jekyll_plugins
 
 gem "tzinfo-data"
