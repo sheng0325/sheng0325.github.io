@@ -1,0 +1,57 @@
+- name: 光伏投资分析 AI Agent
+  year: '2025'
+  tags: 文心智能体、金融科技、数据分析
+  description:
+    - 在文心智能体搭建投研决策 Agent：构建领域知识库与检索链路（切分/元数据/召回 + 重排），支持政策/报告依据 可追溯引用。
+    - 将估值与指标计算工具化：设计 DCF/现金流引擎（含“三免三减半”等税收口径与多情景参数），以工具 Schema 约 束参数与单位口径，通过 Tool/Function Calling 驱动确定性计算。
+    - 面向“计算幻觉/逻辑断层”设计治理：结构化输出模板 + 参数校验/异常回退/澄清问询机制；输出 IRR、LCOE 等及 关键中间项，实现可解释闭环。
+
+- name: 多类别目标检测闭环系统（Faster R-CNN）
+  year: '2024'
+  tags: 目标检测、Faster R-CNN
+  description:
+    - 基于 PyTorch 实现 Faster R-CNN 目标检测完整训练与推理流程，支持 COCO-style JSON 标注解析，在约 3.3 万张 训练图像、1.6 万张测试图像、21 个目标类别的数据集上完成模型训练与评估。
+    - 以 ResNet50 预训练模型作为主干网络，构建标准两阶段目标检测架构，实现 RPN 候选框生成、多尺度目标检测与 RoI 特征对齐。
+    - 采用 SGD 优化器完成模型训练，通过 TensorBoard 监控训练过程，模型 loss 随迭代稳定收敛。
+    - 采用 COCO 官方评估协议，模型在 mAP@IoU=0.5:0.95 指标上达到 0.208。
+
+- name: Face Animation with an Attribute-Guided Diffusion Model
+  year: '2024'
+  tags: 视频换脸、面部动画
+  description:
+    - 复现 FADM 论文，实现高质量的面部动画和视频换脸效果，搭建完整实验环境并整理 Vox-PNG 数据集。
+    - 解决数据预处理难题：使用 skimage 统一视频帧尺寸、转换数据类型为 float32、统一三通道 RGB 格式，替换 imageio.v3 提高视频读取稳定性。
+    - 建立多维度评估体系：使用 PSNR、SSIM、NIQE、FID、LSE-C/LSE-D 等指标进行定量评估，引入 TCS（时间一致性）和 AV Sync（音视频同步）评价思路。
+    - 通过调整训练超参数优化模型效果，分析并解决模型不收敛问题。
+
+- name: 字符级 Transformer 预训练与微调（MinGPT）
+  year: '2024'
+  tags: Transformer、字符级语言模型、span corruption
+  description:
+    - 实现字符级 GPT 模型（4 层 Transformer），完整覆盖因果掩码自注意力、位置编码与解码式建模流程，用于验证小规 模预训练模型的可学习性。
+    - 设计并实现基于 span corruption 的自监督预训练任务（CharCorruption），在字符级维基语料上完成预训练，并迁移至 下游任务，验证预训练对低资源分类任务的增益。
+    - 在出生地预测任务（500 类）上进行微调与评估，采用基于负对数似然的候选集打分进行检索式解码，在验证集上取得 Top-1 准确率 4.2%
+    - 训练层面结合 AdamW、梯度裁剪与 warmup/cosine 学习率策略，保证小模型预训练与微调过程的稳定性
+
+- name: 强化学习训练：腾讯 MOBA 1v1（PPO）
+  year: '2024'
+  tags: MOBA、自博弈、PPO、LSTM、强化学习
+  description:
+    - 基于 MOBA 1v1 PPO 训练框架进行二次开发，搭建自博弈训练与评估闭环（采样/更新/评估），实现与规则 AI 对战。
+    - 重点重构奖励塑形机制（血量/经济/补刀/推塔/技能），提升学习信号密度与训练稳定性。
+    - 围绕训练稳定性进行系统性调参：迭代调整 PPO 超参（clip/熵系数/GAE/学习率/梯度裁剪等），通过胜率与关键行为指标评估改动效果。
+
+- name: Qwen 法律领域微调与部署
+  year: '2024'
+  tags: 法律 NLP、LoRA、ChatML、模型评测、部署服务化
+  description:
+    - 基于 Qwen-7B 模型使用法律领域 SFT 数据进行微调，将通用 LLM 适配到法律垂直领域，解决术语不准确、引用不严谨等问题。
+    - 使用 AI-ModelScope/DISC-Law-SFT 数据集，将数据转换为 ChatML 风格的对话格式，采用 LoRA 进行参数高效微调。
+
+- name: 材料系数管理软件
+  year: '2024'
+  tags: Qt、软件开发
+  description:
+    - 跟随教授开发专业管理软件，应用于北京理工大学唐山研究所，用于管理材料系数数据。
+    - 基于 Qt 开发材料系数管理软件（数据录入/查询/维护等功能），强化软件工程流程与项目协作能力。
+    - 成功应用于实际工作场景，深化了软件开发与项目管理技能。

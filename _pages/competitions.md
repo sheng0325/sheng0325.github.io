@@ -14,7 +14,7 @@ title: "荣誉奖项"
       </div>
       {% if competition.award %}
       <div class="card-award">
-        <i class="fas fa-trophy"></i> {{ competition.award }}
+        {{ competition.award }}
       </div>
       {% endif %}
       {% if competition.outcome %}
@@ -37,7 +37,7 @@ title: "荣誉奖项"
       </div>
       {% if honor.award %}
       <div class="card-award">
-        <i class="fas fa-certificate"></i> {{ honor.award }}
+        {{ honor.award }}
       </div>
       {% endif %}
     </div>
