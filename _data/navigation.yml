@@ -1,9 +1,9 @@
 main:
-  - title: "Posts"
-    url: /posts/
-  - title: "Categories"
-    url: /categories/
-  - title: "Tags"
-    url: /tags/
-  - title: "About"
-    url: /about/
+  - title: "个人信息"
+    url: /
+  - title: "项目"
+    url: /projects/
+  - title: "荣誉奖项"
+    url: /competitions/
+  - title: "联系方式"
+    url: /contact/

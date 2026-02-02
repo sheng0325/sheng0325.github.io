@@ -1,0 +1,114 @@
+---
+---
+
+/* Override theme defaults for a wider, more responsive layout */
+$max-width: 1600px; /* Increase maximum width */
+$text-color: #4a4a4a;
+$doc-font-size: 18px;
+
+@import "minimal-mistakes";
+
+/* Override container width explicitly if variable doesn't catch all cases */
+.page__inner-wrap {
+  max-width: 1400px !important;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+/* Light & Clean Card Design - Single Column List */
+.competition-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Space between cards */
+  margin-top: 2rem;
+  max-width: 1000px; /* Limit width for readability in single column */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.competition-card {
+  background: #ffffff !important; /* Force white background */
+  border: 1px solid #f0f0f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.competition-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: #d1c4e9; /* Soft pastel purple */
+}
+
+.competition-card:hover {
+  transform: translateX(8px); /* Slide slightly right on hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: #d1c4e9;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+  color: #2d3748;
+}
+
+.card-year {
+  font-size: 0.85rem;
+  background-color: #f7fafc;
+  color: #718096;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 500;
+  border: 1px solid #edf2f7;
+}
+
+.card-award {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.95rem;
+  color: #7b1fa2; /* Purple */
+  background-color: #f3e5f5;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  width: fit-content;
+}
+
+.card-award i {
+  margin-right: 8px;
+}
+
+.card-outcome {
+  font-size: 1rem;
+  color: #4a5568;
+  line-height: 1.7;
+}
+
+/* Ensure cards stay light even if user system is in dark mode */
+@media (prefers-color-scheme: dark) {
+  .competition-card {
+    background: #ffffff !important;
+    border-color: #e2e8f0;
+  }
+  .card-title { color: #2d3748; }
+  .card-outcome { color: #4a5568; }
+  .card-year { background-color: #f7fafc; color: #718096; }
+}
