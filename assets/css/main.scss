@@ -201,16 +201,34 @@ h3 {
 
 /* 导航菜单活动状态样式 */
 
-/* 作者头像保持圆形 */
-.author__avatar {
-  border-radius: 50% !important;
+/* 作者头像长方形圆角样式 */
+.author__avatar,
+.sidebar .author__avatar,
+.author-profile .author__avatar,
+.author-profile__avatar {
+  border-radius: 12px !important;
+  overflow: hidden !important;
 }
 
-.author__avatar img {
-  border-radius: 50% !important;
-  width: 100px !important;
-  height: 100px !important;
-  object-fit: cover;
+.author__avatar img,
+.sidebar .author__avatar img,
+.author-profile img,
+.author-profile__avatar img {
+  border-radius: 12px !important;
+  width: 120px !important;
+  height: 150px !important;
+  object-fit: cover !important;
+  overflow: hidden !important;
+}
+
+/* 确保头像容器居中 */
+.author-profile {
+  text-align: center;
+}
+
+.author-profile__avatar {
+  margin: 0 auto;
+  border-radius: 12px !important;
 }
 
 .greedy-nav__toggle:hover {
@@ -229,6 +247,10 @@ h3 {
 .greedy-nav a.current {
   font-weight: 600;
   position: relative;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
 }
 
 .greedy-nav a.current::after {
