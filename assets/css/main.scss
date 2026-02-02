@@ -1,91 +1,106 @@
 ---
 ---
 
-/* Override theme defaults for a wider, more responsive layout */
-$max-width: 1600px; /* Increase maximum width */
-$text-color: #4a4a4a;
-$doc-font-size: 18px;
+/* Increase overall site width limit to use right-side space */
+$max-width: 1400px;
 
 @import "minimal-mistakes";
 
-/* Override container width explicitly if variable doesn't catch all cases */
+/* 
+   Modern Minimalist Purple - Widescreen Optimized
+   Preserves Sidebar, Expands Content
+*/
+
+/* Force the inner content wrapper to fill the available space next to sidebar */
 .page__inner-wrap {
-  max-width: 1400px !important;
-  padding-right: 2rem;
-  padding-left: 2rem;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding-right: 0;
 }
 
-/* Light & Clean Card Design - Single Column List */
+/* Section Headers */
+h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2d3748;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 0.5rem;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+h2::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 24px;
+  background-color: #660874; /* Tsinghua Purple */
+  margin-right: 12px;
+  border-radius: 3px;
+}
+
 .competition-grid {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem; /* Space between cards */
-  margin-top: 2rem;
-  max-width: 1000px; /* Limit width for readability in single column */
-  margin-left: auto;
-  margin-right: auto;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 100%; /* Allow cards to stretch full width */
 }
 
 .competition-card {
-  background: #ffffff !important; /* Force white background */
-  border: 1px solid #f0f0f0;
-  border-radius: 12px;
+  background: #ffffff !important;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
   padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease-in-out;
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow: hidden;
-}
-
-.competition-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 5px;
-  height: 100%;
-  background: #d1c4e9; /* Soft pastel purple */
 }
 
 .competition-card:hover {
-  transform: translateX(8px); /* Slide slightly right on hover */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-color: #d1c4e9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+  border-color: #b39ddb;
 }
 
 .card-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center; /* Better alignment for wide cards */
   margin-bottom: 0.75rem;
+  gap: 1rem;
 }
 
 .card-title {
-  font-size: 1.2rem;
+  font-size: 1.2rem; /* Kept readable size */
   font-weight: 700;
   margin: 0;
-  color: #2d3748;
+  color: #1a202c;
+  line-height: 1.4;
 }
 
 .card-year {
   font-size: 0.85rem;
-  background-color: #f7fafc;
   color: #718096;
+  white-space: nowrap;
+  background: #f7fafc;
   padding: 4px 12px;
-  border-radius: 20px;
-  font-weight: 500;
+  border-radius: 6px; /* Slightly softer */
   border: 1px solid #edf2f7;
+  flex-shrink: 0;
 }
 
 .card-award {
   display: inline-flex;
   align-items: center;
-  font-size: 0.95rem;
-  color: #7b1fa2; /* Purple */
-  background-color: #f3e5f5;
-  padding: 4px 12px;
+  font-size: 0.85rem;
+  color: #660874;
+  background-color: rgba(102, 8, 116, 0.08);
+  padding: 4px 10px;
   border-radius: 6px;
   font-weight: 600;
   margin-bottom: 0.75rem;
@@ -93,22 +108,26 @@ $doc-font-size: 18px;
 }
 
 .card-award i {
-  margin-right: 8px;
+  margin-right: 6px;
+  font-size: 0.9em;
 }
 
 .card-outcome {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #4a5568;
-  line-height: 1.7;
+  line-height: 1.6;
+  margin-top: 0.25rem;
 }
 
-/* Ensure cards stay light even if user system is in dark mode */
+/* Dark mode overrides */
 @media (prefers-color-scheme: dark) {
   .competition-card {
     background: #ffffff !important;
-    border-color: #e2e8f0;
+    border-color: #eaeaea;
   }
-  .card-title { color: #2d3748; }
+  .card-title { color: #1a202c; }
   .card-outcome { color: #4a5568; }
-  .card-year { background-color: #f7fafc; color: #718096; }
+  .card-year { color: #718096; background: #f7fafc; }
+  h2 { color: #2d3748; }
 }
+
