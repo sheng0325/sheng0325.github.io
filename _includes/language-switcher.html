@@ -1,4 +1,4 @@
-<div class="language-switcher-wrapper">
+<div class="language-switcher-wrapper" id="language-switcher-wrapper" style="display: none;">
   <div class="language-switcher">
     <a href="/en/" class="lang-btn" id="lang-en-link">
       <span class="lang-icon">🌐</span>
@@ -64,9 +64,10 @@
     const currentLang = getCurrentLanguage();
     const enLink = document.getElementById('lang-en-link');
     const zhLink = document.getElementById('lang-zh-link');
+    const switcherWrapper = document.getElementById('language-switcher-wrapper');
 
-    if (!enLink || !zhLink) {
-      console.warn('Language switcher links not found');
+    if (!enLink || !zhLink || !switcherWrapper) {
+      console.warn('Language switcher elements not found');
       return;
     }
 
@@ -83,9 +84,51 @@
       enLink.href = getAlternatePath();
     }
 
+    // 将语言切换器移动到导航栏
+    moveToNavbar();
+
     console.log('Language switcher initialized. Current language:', currentLang);
     console.log('EN link:', enLink.href);
     console.log('ZH link:', zhLink.href);
+  }
+
+  // 将语言切换器移动到导航栏
+  function moveToNavbar() {
+    const switcherWrapper = document.getElementById('language-switcher-wrapper');
+    const greedyNav = document.querySelector('.greedy-nav');
+
+    if (switcherWrapper && greedyNav) {
+      // 显示语言切换器
+      switcherWrapper.style.display = 'block';
+
+      // 查找或创建语言切换器容器
+      let langContainer = greedyNav.querySelector('.language-switcher-nav');
+
+      if (!langContainer) {
+        // 创建语言切换器容器
+        langContainer = document.createElement('div');
+        langContainer.className = 'language-switcher-nav';
+
+        // 找到导航链接容器
+        const navLinks = greedyNav.querySelector('.nav-links');
+        if (navLinks) {
+          navLinks.appendChild(langContainer);
+        }
+      }
+
+      // 将语言切换器移动到导航栏
+      langContainer.appendChild(switcherWrapper);
+
+      // 更新样式
+      switcherWrapper.style.position = 'static';
+      switcherWrapper.style.top = 'auto';
+      switcherWrapper.style.right = 'auto';
+    } else {
+      // 如果找不到导航栏，使用固定定位（回退方案）
+      if (switcherWrapper) {
+        switcherWrapper.style.display = 'block';
+      }
+    }
   }
 
   // 页面加载完成后立即初始化
@@ -98,11 +141,22 @@
 </script>
 
 <style>
+/* 默认固定定位（回退方案） */
 .language-switcher-wrapper {
   position: fixed;
   top: 0.5rem;
   right: 2rem;
   z-index: 1000;
+}
+
+/* 导航栏中的样式 */
+.language-switcher-nav .language-switcher-wrapper {
+  position: static;
+  top: auto;
+  right: auto;
+  z-index: auto;
+  display: inline-block;
+  margin-left: 1rem;
 }
 
 .language-switcher {
@@ -172,6 +226,10 @@
   .language-switcher-wrapper {
     top: 0.3rem;
     right: 1rem;
+  }
+
+  .language-switcher-nav .language-switcher-wrapper {
+    margin-left: 0.5rem;
   }
 
   .lang-text {

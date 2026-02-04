@@ -39,3 +39,26 @@
     - Based on YOLOv5, improved student behavior recognition in classroom scenarios, optimized detection performance for dense small targets.
     - Optimized data augmentation strategies, improved model robustness under different lighting and angles.
     - Deployed model to edge devices, achieved real-time detection with FPS > 25.
+
+- name: Reinforcement Learning Training: Tencent MOBA 1v1 (PPO)
+  year: '2024'
+  tags: MOBA, Self-play, PPO, LSTM, Reinforcement Learning
+  description:
+    - Secondary development based on MOBA 1v1 PPO training framework, built self-play training and evaluation closed-loop (sampling/update/evaluation), implemented battles with rule-based AI.
+    - Focused on refactoring reward shaping mechanism (health/economy/last-hitting/tower-pushing/skills), improved learning signal density and training stability.
+    - Systematic hyperparameter tuning around training stability: iteratively adjusted PPO hyperparameters (clip/entropy coefficient/GAE/learning rate/gradient clipping, etc.), evaluated modification effects through win rate and key behavior metrics.
+
+- name: Qwen Legal Domain Fine-tuning and Deployment
+  year: '2024'
+  tags: Legal NLP, LoRA, ChatML, Model Evaluation, Service Deployment
+  description:
+    - Fine-tuned Qwen-7B model using legal domain SFT data to adapt general LLM to legal vertical domain, solving issues such as inaccurate terminology and imprecise citations.
+    - Used AI-ModelScope/DISC-Law-SFT dataset, converted data to ChatML-style dialogue format, employed LoRA for parameter-efficient fine-tuning.
+
+- name: Material Coefficient Management Software
+  year: '2024'
+  tags: Qt, Software Development
+  description:
+    - Developed professional management software following professor, applied at Beijing Institute of Technology Tangshan Institute, for managing material coefficient data.
+    - Developed material coefficient management software based on Qt (data entry/query/maintenance functions), strengthened software engineering processes and project collaboration skills.
+    - Successfully applied to actual work scenarios, deepened software development and project management skills.

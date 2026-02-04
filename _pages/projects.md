@@ -4,6 +4,7 @@ permalink: /projects/
 title: "项目"
 author_profile: true
 lang: zh
+navigation: navigation
 ---
 
 {% include language-switcher.html %}

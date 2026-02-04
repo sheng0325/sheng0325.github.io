@@ -4,6 +4,7 @@ title: "About"
 permalink: /en/
 author_profile: true
 lang: en
+navigation: navigation-en
 ---
 
 {% include language-switcher.html %}

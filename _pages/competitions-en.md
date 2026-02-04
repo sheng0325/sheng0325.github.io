@@ -4,6 +4,7 @@ permalink: /en/competitions/
 title: "Honors & Awards"
 author_profile: true
 lang: en
+navigation: navigation-en
 ---
 
 {% include language-switcher.html %}
