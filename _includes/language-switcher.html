@@ -1,26 +1,66 @@
 <div class="language-switcher-wrapper">
   <div class="language-switcher">
-    {% if page.lang == 'en' %}
-      <a href="/en/" class="lang-btn active" title="Current: English">
-        <span class="lang-icon">🌐</span>
-        <span class="lang-text">EN</span>
-      </a>
-      <a href="/" class="lang-btn" title="切换到中文">
-        <span class="lang-icon">🇨🇳</span>
-        <span class="lang-text">中文</span>
-      </a>
-    {% else %}
-      <a href="/en/" class="lang-btn" title="Switch to English">
-        <span class="lang-icon">🌐</span>
-        <span class="lang-text">EN</span>
-      </a>
-      <a href="/" class="lang-btn active" title="当前：中文">
-        <span class="lang-icon">🇨🇳</span>
-        <span class="lang-text">中文</span>
-      </a>
-    {% endif %}
+    <button class="lang-btn" id="lang-en" onclick="switchLanguage('en')">
+      <span class="lang-icon">🌐</span>
+      <span class="lang-text">EN</span>
+    </button>
+    <button class="lang-btn" id="lang-zh" onclick="switchLanguage('zh')">
+      <span class="lang-icon">🇨🇳</span>
+      <span class="lang-text">中文</span>
+    </button>
   </div>
 </div>
+
+<script>
+// 获取当前页面语言
+function getCurrentLanguage() {
+  const path = window.location.pathname;
+
+  if (path === '/en/' || path.startsWith('/en/')) {
+    return 'en';
+  } else {
+    return 'zh';
+  }
+}
+
+// 初始化按钮状态
+function initLanguageButtons() {
+  const currentLang = getCurrentLanguage();
+  const enBtn = document.getElementById('lang-en');
+  const zhBtn = document.getElementById('lang-zh');
+
+  if (currentLang === 'en') {
+    enBtn.classList.add('active');
+    zhBtn.classList.remove('active');
+  } else {
+    zhBtn.classList.add('active');
+    enBtn.classList.remove('active');
+  }
+}
+
+// 切换语言
+function switchLanguage(lang) {
+  const currentLang = getCurrentLanguage();
+
+  if (lang === currentLang) {
+    // 已经在当前语言，不跳转
+    return;
+  }
+
+  if (lang === 'en') {
+    // 切换到英文
+    window.location.href = '/en/';
+  } else {
+    // 切换到中文
+    window.location.href = '/';
+  }
+}
+
+// 页面加载时初始化
+document.addEventListener('DOMContentLoaded', function() {
+  initLanguageButtons();
+});
+</script>
 
 <style>
 .language-switcher-wrapper {
@@ -60,6 +100,8 @@
   border-radius: 14px;
   transition: all 0.3s ease;
   cursor: pointer;
+  border: none;
+  background: transparent;
 }
 
 .lang-btn:hover {
@@ -71,6 +113,12 @@
   background: #660874;
   color: #ffffff;
   box-shadow: 0 2px 6px rgba(102, 8, 116, 0.3);
+  cursor: default;
+}
+
+.lang-btn.active:hover {
+  transform: none;
+  background: #660874;
 }
 
 .lang-icon {
