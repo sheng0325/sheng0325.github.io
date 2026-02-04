@@ -7,7 +7,6 @@ lang: zh
 navigation: navigation
 ---
 
-{% include language-switcher.html %}
 
 <div class="competition-grid">
   {% for project in site.data.projects %}

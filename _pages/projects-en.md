@@ -7,9 +7,6 @@ lang: en
 navigation: navigation-en
 ---
 
-{% include language-switcher.html %}
-
-## Projects
 
 <div class="competition-grid">
   {% for project in site.data.projects-en %}
@@ -18,25 +15,19 @@ navigation: navigation-en
         <div class="card-title">{{ project.name }}</div>
         <div class="card-year">{{ project.year }}</div>
       </div>
-
-      {% if project.domain %}
-        <div class="card-domain">{{ project.domain }}</div>
+      {% if project.tags %}
+      <div class="card-domain">
+        {{ project.tags }}
+      </div>
       {% endif %}
-
-      {% if project.tech %}
-        <div class="card-tech">{{ project.tech }}</div>
-      {% endif %}
-
+      {% if project.description %}
       <div class="card-description">
         <ul>
           {% for item in project.description %}
-            <li>{{ item }}</li>
+          <li>{{ item }}</li>
           {% endfor %}
         </ul>
       </div>
-
-      {% if project.tags %}
-        <div class="card-tech" style="margin-top: auto;">{{ project.tags }}</div>
       {% endif %}
     </div>
   {% endfor %}

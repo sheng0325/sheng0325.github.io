@@ -1,11 +1,11 @@
 services:
   jekyll:
-    platform: linux/arm64
-    image: jekyll/jekyll:pages
+    image: jekyll/jekyll:latest
     volumes:
       - .:/srv/jekyll
     ports:
       - "4000:4000"
-    command: jekyll serve --host 0.0.0.0 --port 4000 --livereload
+      - "35729:35729"
+    command: /bin/bash -c "bundle install && bundle exec jekyll serve --host 0.0.0.0 --port 4000 --livereload"
     environment:
       - JEKYLL_ENV=development

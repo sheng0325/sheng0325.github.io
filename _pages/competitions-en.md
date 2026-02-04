@@ -7,7 +7,6 @@ lang: en
 navigation: navigation-en
 ---
 
-{% include language-switcher.html %}
 
 ## Competitions
 
@@ -20,13 +19,14 @@ navigation: navigation-en
       </div>
 
       {% if competition.award %}
-        <div class="card-award">
-          <i class="fas fa-trophy"></i> {{ competition.award }}
-        </div>
+      <div class="card-award">
+        {{ competition.award }}
+      </div>
       {% endif %}
-
       {% if competition.outcome %}
-        <div class="card-outcome">{{ competition.outcome }}</div>
+      <div class="card-outcome">
+        {{ competition.outcome }}
+      </div>
       {% endif %}
     </div>
   {% endfor %}

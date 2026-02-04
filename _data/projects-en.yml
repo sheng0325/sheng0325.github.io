@@ -2,63 +2,63 @@
   year: '2025'
   tags: ERNIE Agent, FinTech, Data Analysis
   description:
-    - Built an investment research decision-making agent on ERNIE Agent platform: constructed domain knowledge base and retrieval pipeline (chunking/metadata/recall + reranking), supporting traceable citations of policy/re reports.
-    - Toolized valuation and metric calculations: designed DCF/cash flow engine (including tax parameters like "three-year exemption and three-year halving" and multi-scenario parameters), constraining parameters and unit standards through Tool Schema, driving deterministic calculations via Tool/Function Calling.
-    - Designed governance for "computational hallucinations/logical discontinuities": structured output templates + parameter validation/exception fallback/clarification query mechanisms; outputs IRR, LCOE, and key intermediate items, achieving an interpretable closed loop.
+    - "Built an investment research decision-making agent on ERNIE Agent platform: constructed domain knowledge base and retrieval pipeline (chunking/metadata/recall + reranking), supporting traceable citations of policy/re reports."
+    - "Toolized valuation and metric calculations: designed DCF/cash flow engine (including tax parameters like \"three-year exemption and three-year halving\" and multi-scenario parameters), constraining parameters and unit standards through Tool Schema, driving deterministic calculations via Tool/Function Calling."
+    - "Designed governance for \"computational hallucinations/logical discontinuities\": structured output templates + parameter validation/exception fallback/clarification query mechanisms; outputs IRR, LCOE, and key intermediate items, achieving an interpretable closed loop."
 
 - name: Multi-class Object Detection End-to-End System (Faster R-CNN)
   year: '2024'
   tags: Object Detection, Faster R-CNN
   description:
-    - Implemented complete Faster R-CNN training and inference pipeline based on PyTorch, supporting COCO-style JSON annotation parsing, completed model training and evaluation on a dataset of approximately 33k training images, 16k test images, and 21 object categories.
-    - Used ResNet50 pre-trained model as backbone, built standard two-stage object detection architecture, implemented RPN proposal generation, multi-scale object detection, and RoI feature alignment.
-    - Completed model training using SGD optimizer, monitored training process through TensorBoard, model loss converged stably with iterations.
-    - Adopted COCO official evaluation protocol, model achieved 0.208 on mAP@IoU=0.5:0.95 metric.
+    - "Implemented complete Faster R-CNN training and inference pipeline based on PyTorch, supporting COCO-style JSON annotation parsing, completed model training and evaluation on a dataset of approximately 33k training images, 16k test images, and 21 object categories."
+    - "Used ResNet50 pre-trained model as backbone, built standard two-stage object detection architecture, implemented RPN proposal generation, multi-scale object detection, and RoI feature alignment."
+    - "Completed model training using SGD optimizer, monitored training process through TensorBoard, model loss converged stably with iterations."
+    - "Adopted COCO official evaluation protocol, model achieved 0.208 on mAP@IoU=0.5:0.95 metric."
 
 - name: Face Animation with an Attribute-Guided Diffusion Model
   year: '2024'
   tags: Face Swap, Face Animation
   description:
-    - Reproduced FADM paper, implemented high-quality face animation and video face swap effects, set up complete experimental environment and organized Vox-PNG dataset.
-    - Solved data preprocessing challenges: used skimage to unify video frame dimensions, convert data type to float32, unify three-channel RGB format, replaced imageio.v3 to improve video reading stability.
-    - Established multi-dimensional evaluation system: used PSNR, SSIM, NIQE, FID, LSE-C/LSE-D metrics for quantitative evaluation, introduced TCS (Temporal Consistency) and AV Sync (Audio-Video Synchronization) evaluation concepts.
-    - Optimized model effects by adjusting training hyperparameters, analyzed and solved model non-convergence issues.
+    - "Reproduced FADM paper, implemented high-quality face animation and video face swap effects, set up complete experimental environment and organized Vox-PNG dataset."
+    - "Solved data preprocessing challenges: used skimage to unify video frame dimensions, convert data type to float32, unify three-channel RGB format, replaced imageio.v3 to improve video reading stability."
+    - "Established multi-dimensional evaluation system: used PSNR, SSIM, NIQE, FID, LSE-C/LSE-D metrics for quantitative evaluation, introduced TCS (Temporal Consistency) and AV Sync (Audio-Video Synchronization) evaluation concepts."
+    - "Optimized model effects by adjusting training hyperparameters, analyzed and solved model non-convergence issues."
 
 - name: Character-level Transformer Pre-training and Fine-tuning (MinGPT)
   year: '2024'
   tags: Transformer, Character-level Language Model, Span Corruption
   description:
-    - Implemented character-level Transformer pre-training based on MinGPT framework, supporting masked language model (MLM) training for text generation tasks.
-    - Designed span corruption pre-training task, improved model's understanding of long-distance dependencies and context.
-    - Fine-tuned on specific domain datasets, achieved performance improvement on text generation and classification tasks.
+    - "Implemented character-level Transformer pre-training based on MinGPT framework, supporting masked language model (MLM) training for text generation tasks."
+    - "Designed span corruption pre-training task, improved model's understanding of long-distance dependencies and context."
+    - "Fine-tuned on specific domain datasets, achieved performance improvement on text generation and classification tasks."
 
 - name: Deep Learning-based Recognition of Student Classroom Behavior
   year: '2024'
   tags: Computer Vision, Object Detection, YOLOv5
   description:
-    - Based on YOLOv5, improved student behavior recognition in classroom scenarios, optimized detection performance for dense small targets.
-    - Optimized data augmentation strategies, improved model robustness under different lighting and angles.
-    - Deployed model to edge devices, achieved real-time detection with FPS > 25.
+    - "Based on YOLOv5, improved student behavior recognition in classroom scenarios, optimized detection performance for dense small targets."
+    - "Optimized data augmentation strategies, improved model robustness under different lighting and angles."
+    - "Deployed model to edge devices, achieved real-time detection with FPS > 25."
 
-- name: Reinforcement Learning Training: Tencent MOBA 1v1 (PPO)
+- name: Reinforcement Learning Training Tencent MOBA 1v1 PPO
   year: '2024'
   tags: MOBA, Self-play, PPO, LSTM, Reinforcement Learning
   description:
-    - Secondary development based on MOBA 1v1 PPO training framework, built self-play training and evaluation closed-loop (sampling/update/evaluation), implemented battles with rule-based AI.
-    - Focused on refactoring reward shaping mechanism (health/economy/last-hitting/tower-pushing/skills), improved learning signal density and training stability.
-    - Systematic hyperparameter tuning around training stability: iteratively adjusted PPO hyperparameters (clip/entropy coefficient/GAE/learning rate/gradient clipping, etc.), evaluated modification effects through win rate and key behavior metrics.
+    - "Secondary development based on MOBA 1v1 PPO training framework, built self-play training and evaluation closed-loop (sampling/update/evaluation), implemented battles with rule-based AI."
+    - "Focused on refactoring reward shaping mechanism (health/economy/last-hitting/tower-pushing/skills), improved learning signal density and training stability."
+    - "Systematic hyperparameter tuning around training stability: iteratively adjusted PPO hyperparameters (clip/entropy coefficient/GAE/learning rate/gradient clipping), evaluated modification effects through win rate and key behavior metrics."
 
 - name: Qwen Legal Domain Fine-tuning and Deployment
   year: '2024'
   tags: Legal NLP, LoRA, ChatML, Model Evaluation, Service Deployment
   description:
-    - Fine-tuned Qwen-7B model using legal domain SFT data to adapt general LLM to legal vertical domain, solving issues such as inaccurate terminology and imprecise citations.
-    - Used AI-ModelScope/DISC-Law-SFT dataset, converted data to ChatML-style dialogue format, employed LoRA for parameter-efficient fine-tuning.
+    - "Fine-tuned Qwen-7B model using legal domain SFT data to adapt general LLM to legal vertical domain, solving issues such as inaccurate terminology and imprecise citations."
+    - "Used AI-ModelScope/DISC-Law-SFT dataset, converted data to ChatML-style dialogue format, employed LoRA for parameter-efficient fine-tuning."
 
 - name: Material Coefficient Management Software
   year: '2024'
   tags: Qt, Software Development
   description:
-    - Developed professional management software following professor, applied at Beijing Institute of Technology Tangshan Institute, for managing material coefficient data.
-    - Developed material coefficient management software based on Qt (data entry/query/maintenance functions), strengthened software engineering processes and project collaboration skills.
-    - Successfully applied to actual work scenarios, deepened software development and project management skills.
+    - "Developed professional management software following professor, applied at Beijing Institute of Technology Tangshan Institute, for managing material coefficient data."
+    - "Developed material coefficient management software based on Qt (data entry/query/maintenance functions), strengthened software engineering processes and project collaboration skills."
+    - "Successfully applied to actual work scenarios, deepened software development and project management skills."

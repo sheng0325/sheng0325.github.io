@@ -1,0 +1,48 @@
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="{{ '/' | relative_url }}">
+          {{ site.title }}
+        </a>
+        {% assign is_en = false %}
+        {% if page.dir == '/en/' or page.dir contains '/en' or page.url contains '/en/' %}
+          {% assign is_en = true %}
+        {% endif %}
+
+        {% assign nav_data = site.data[page.navigation] %}
+        {% if nav_data == nil and page.navigation %}
+          {% assign nav_key = page.navigation | replace: '-', '_' %}
+          {% assign nav_data = site.data[nav_key] %}
+        {% endif %}
+        {% if nav_data == nil %}
+          {% if is_en %}
+            {% assign nav_data = site.data["navigation-en"] %}
+          {% else %}
+            {% assign nav_data = site.data.navigation %}
+          {% endif %}
+        {% endif %}
+        {% assign nav = nav_data.main %}
+        <ul class="visible-links">
+          {% if nav %}
+            {% for link in nav %}
+              <li class="masthead__menu-item">
+                <a href="{{ link.url | relative_url }}"{% if link.description %} title="{{ link.description }}"{% endif %}>
+                  {{ link.title }}
+                </a>
+              </li>
+            {% endfor %}
+          {% endif %}
+          <li class="masthead__menu-item">
+            {% include language-switcher.html %}
+          </li>
+        </ul>
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>

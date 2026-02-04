@@ -7,7 +7,6 @@ lang: en
 navigation: navigation-en
 ---
 
-{% include language-switcher.html %}
 
 Welcome to my personal portfolio!
 

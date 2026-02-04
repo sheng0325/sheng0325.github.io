@@ -1,14 +1,7 @@
-<div class="language-switcher-wrapper" id="language-switcher-wrapper" style="display: none;">
-  <div class="language-switcher">
-    <a href="/en/" class="lang-btn" id="lang-en-link">
-      <span class="lang-icon">🌐</span>
-      <span class="lang-text">EN</span>
-    </a>
-    <a href="/" class="lang-btn" id="lang-zh-link">
-      <span class="lang-icon">🇨🇳</span>
-      <span class="lang-text">中文</span>
-    </a>
-  </div>
+<div class="language-switcher">
+  <a href="/en/" class="language-link" id="lang-en-link">EN</a>
+  <span class="language-sep">/</span>
+  <a href="/" class="language-link" id="lang-zh-link">中文</a>
 </div>
 
 <script>
@@ -18,7 +11,7 @@
   // 获取当前页面语言
   function getCurrentLanguage() {
     const path = window.location.pathname;
-    if (path.startsWith('/en/') || path === '/en' || path.endsWith('/en/')) {
+    if (path.startsWith('/en/') || path === '/en') {
       return 'en';
     } else {
       return 'zh';
@@ -35,7 +28,7 @@
 
     if (currentLang === 'en') {
       // 英文 -> 中文
-      if (cleanPath === '/en' || cleanPath === '' || cleanPath === '/') {
+      if (cleanPath === '/en' || cleanPath === '') {
         return '/';
       } else if (cleanPath.startsWith('/en/projects')) {
         return '/projects/';
@@ -64,71 +57,76 @@
     const currentLang = getCurrentLanguage();
     const enLink = document.getElementById('lang-en-link');
     const zhLink = document.getElementById('lang-zh-link');
-    const switcherWrapper = document.getElementById('language-switcher-wrapper');
 
-    if (!enLink || !zhLink || !switcherWrapper) {
-      console.warn('Language switcher elements not found');
+    if (!enLink || !zhLink) {
+      console.warn('Language switcher links not found');
       return;
     }
 
-    // 设置按钮状态
+    // 设置按钮状态和链接
     if (currentLang === 'en') {
       enLink.classList.add('active');
       zhLink.classList.remove('active');
-      // 英文页面时，中文按钮应该链接到对应的中文页面
       zhLink.href = getAlternatePath();
     } else {
       zhLink.classList.add('active');
       enLink.classList.remove('active');
-      // 中文页面时，英文按钮应该链接到对应的英文页面
       enLink.href = getAlternatePath();
     }
 
-    // 将语言切换器移动到导航栏
-    moveToNavbar();
-
     console.log('Language switcher initialized. Current language:', currentLang);
-    console.log('EN link:', enLink.href);
-    console.log('ZH link:', zhLink.href);
   }
 
-  // 将语言切换器移动到导航栏
-  function moveToNavbar() {
-    const switcherWrapper = document.getElementById('language-switcher-wrapper');
-    const greedyNav = document.querySelector('.greedy-nav');
+  // 更新导航菜单文本和链接
+  function updateNavigationMenu(currentLang) {
+    const navLinks = document.querySelectorAll('.masthead__menu-item a:not(.language-link)');
+    const navData = currentLang === 'en' ? [
+      { title: 'About', url: '/en/' },
+      { title: 'Projects', url: '/en/projects/' },
+      { title: 'Honors & Awards', url: '/en/competitions/' }
+    ] : [
+      { title: '个人信息', url: '/' },
+      { title: '项目', url: '/projects/' },
+      { title: '荣誉奖项', url: '/competitions/' }
+    ];
 
-    if (switcherWrapper && greedyNav) {
-      // 显示语言切换器
-      switcherWrapper.style.display = 'block';
-
-      // 查找或创建语言切换器容器
-      let langContainer = greedyNav.querySelector('.language-switcher-nav');
-
-      if (!langContainer) {
-        // 创建语言切换器容器
-        langContainer = document.createElement('div');
-        langContainer.className = 'language-switcher-nav';
-
-        // 找到导航链接容器
-        const navLinks = greedyNav.querySelector('.nav-links');
-        if (navLinks) {
-          navLinks.appendChild(langContainer);
-        }
+    // 更新前3个导航链接（排除语言切换器）
+    navLinks.forEach((link, index) => {
+      if (index < navData.length && navData[index]) {
+        link.textContent = navData[index].title;
+        link.href = navData[index].url;
       }
+    });
 
-      // 将语言切换器移动到导航栏
-      langContainer.appendChild(switcherWrapper);
+    console.log('Navigation menu updated for language:', currentLang);
+  }
 
-      // 更新样式
-      switcherWrapper.style.position = 'static';
-      switcherWrapper.style.top = 'auto';
-      switcherWrapper.style.right = 'auto';
-    } else {
-      // 如果找不到导航栏，使用固定定位（回退方案）
-      if (switcherWrapper) {
-        switcherWrapper.style.display = 'block';
-      }
+  // 初始化语言切换器
+  function initLanguageSwitcher() {
+    const currentLang = getCurrentLanguage();
+    const enLink = document.getElementById('lang-en-link');
+    const zhLink = document.getElementById('lang-zh-link');
+
+    if (!enLink || !zhLink) {
+      console.warn('Language switcher links not found');
+      return;
     }
+
+    // 设置按钮状态和链接
+    if (currentLang === 'en') {
+      enLink.classList.add('active');
+      zhLink.classList.remove('active');
+      zhLink.href = getAlternatePath();
+    } else {
+      zhLink.classList.add('active');
+      enLink.classList.remove('active');
+      enLink.href = getAlternatePath();
+    }
+
+    // 更新导航菜单
+    updateNavigationMenu(currentLang);
+
+    console.log('Language switcher initialized. Current language:', currentLang);
   }
 
   // 页面加载完成后立即初始化
@@ -141,107 +139,24 @@
 </script>
 
 <style>
-/* 默认固定定位（回退方案） */
-.language-switcher-wrapper {
-  position: fixed;
-  top: 0.5rem;
-  right: 2rem;
-  z-index: 1000;
-}
-
-/* 导航栏中的样式 */
-.language-switcher-nav .language-switcher-wrapper {
-  position: static;
-  top: auto;
-  right: auto;
-  z-index: auto;
-  display: inline-block;
-  margin-left: 1rem;
-}
-
 .language-switcher {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.35rem 0.6rem;
-  background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
-  border-radius: 20px;
-  border: 1px solid #d8b4fe;
-  box-shadow: 0 2px 8px rgba(102, 8, 116, 0.1);
-  transition: all 0.3s ease;
 }
 
-.language-switcher:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 8, 116, 0.2);
-  border-color: #c084fc;
-}
-
-.lang-btn {
-  color: #660874;
+.language-link {
   text-decoration: none;
-  font-size: 0.85rem;
+  color: inherit;
+  font-weight: inherit;
+}
+
+.language-link.active {
   font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.35rem 0.6rem;
-  border-radius: 14px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border: none;
-  background: transparent;
-}
-
-.lang-btn:hover:not(.active) {
-  background: rgba(102, 8, 116, 0.1);
-  transform: scale(1.05);
-}
-
-.lang-btn.active {
-  background: #660874;
-  color: #ffffff;
-  box-shadow: 0 2px 6px rgba(102, 8, 116, 0.3);
-  cursor: default;
   pointer-events: none;
 }
 
-.lang-btn.active:hover {
-  transform: none;
-  background: #660874;
-}
-
-.lang-icon {
-  font-size: 1rem;
-  line-height: 1;
-}
-
-.lang-text {
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-
-/* 移动端适配 */
-@media (max-width: 768px) {
-  .language-switcher-wrapper {
-    top: 0.3rem;
-    right: 1rem;
-  }
-
-  .language-switcher-nav .language-switcher-wrapper {
-    margin-left: 0.5rem;
-  }
-
-  .lang-text {
-    display: none;
-  }
-
-  .language-switcher {
-    padding: 0.4rem;
-  }
-
-  .lang-btn {
-    padding: 0.4rem;
-  }
+.language-sep {
+  margin: 0 0.25rem;
+  color: inherit;
 }
 </style>

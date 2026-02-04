@@ -213,22 +213,7 @@ h3 {
   align-items: center;
 }
 
-/* 在导航栏右侧添加语言切换器 */
-.greedy-nav::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-/* 将语言切换器放在页面右上角 */
-.language-switcher-wrapper {
-  position: fixed;
-  top: 1rem;
-  right: 2rem;
-  z-index: 100;
-}
+/* 语言切换器外观由导航栏样式继承 */
 
 /* 作者头像长方形圆角样式 */
 .author__avatar,
@@ -323,4 +308,3 @@ h3 {
   .card-year { color: #718096; background: #f7fafc; }
   h2 { color: #2d3748; }
 }
-

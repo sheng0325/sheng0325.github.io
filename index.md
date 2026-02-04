@@ -6,7 +6,6 @@ lang: zh
 navigation: navigation
 ---
 
-{% include language-switcher.html %}
 
 欢迎来到我的个人作品集！
 

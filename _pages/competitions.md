@@ -7,7 +7,6 @@ lang: zh
 navigation: navigation
 ---
 
-{% include language-switcher.html %}
 
 ## 比赛
 
