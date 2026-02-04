@@ -201,6 +201,35 @@ h3 {
 
 /* 导航菜单活动状态样式 */
 
+/* 语言切换器定位到导航栏右侧 */
+.masthead {
+  position: relative;
+}
+
+.greedy-nav {
+  position: relative;
+  display: flex;
+  justify-content: center !important;
+  align-items: center;
+}
+
+/* 在导航栏右侧添加语言切换器 */
+.greedy-nav::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* 将语言切换器放在页面右上角 */
+.language-switcher-wrapper {
+  position: fixed;
+  top: 1rem;
+  right: 2rem;
+  z-index: 100;
+}
+
 /* 作者头像长方形圆角样式 */
 .author__avatar,
 .sidebar .author__avatar,
