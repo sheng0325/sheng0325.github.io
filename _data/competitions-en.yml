@@ -1,24 +1,29 @@
 - name: CP Cup (正大杯)
   year: 2025
   award: National First Prize
-  outcome: Served as data analyst. Led data cleaning and quality control of 1000+ questionnaires, built binary Logit models and K-Means clustering algorithms. Combined SPSS statistics with Python data analysis to provide solid quantitative support for the research.
+  outcome: >-
+    Served as data analyst. Led data cleaning and quality control of 1000+ questionnaires, built binary Logit models and K-Means clustering algorithms. Combined SPSS statistics with Python data analysis to provide solid quantitative support for the research.
 
 - name: The 22nd "Century Cup" Student Extracurricular Academic Science and Technology Works Competition
   year: 2025
   award: School-level First Prize
-  outcome: Focused on the social hotspot issue of "e-commerce price discrimination against regular customers," deeply explored the economic logic behind the data. Primarily responsible for data analysis and research report writing, proposed constructive regulatory and response suggestions from the perspective of consumer rights protection, demonstrating concern for social fairness through technology.
+  outcome: >-
+    Focused on the social hotspot issue of e-commerce price discrimination against regular customers, deeply explored the economic logic behind the data. Primarily responsible for data analysis and research report writing, proposed constructive regulatory and response suggestions from the perspective of consumer rights protection, demonstrating concern for social fairness through technology.
 
-- name: National AI Application Innovation Competition: Generative AI
+- name: National AI Application Innovation Competition - Generative AI
   year: 2025
   award: Provincial Third Prize
-  outcome: Core project developer. Designed and implemented a "PV Investment Analysis AI Agent." The agent integrates data processing and financial valuation algorithms, capable of automatically calculating investment return rate (ROI) and feasibility of photovoltaic projects, providing intelligent decision support for new energy investment.
+  outcome: >-
+    Core project developer. Designed and implemented a PV Investment Analysis AI Agent. The agent integrates data processing and financial valuation algorithms, capable of automatically calculating investment return rate (ROI) and feasibility of photovoltaic projects, providing intelligent decision support for new energy investment.
 
 - name: CESIM Business Simulation Challenge
   year: 2025
   award: Third Prize
-  outcome: Transformed team's macro strategies into testable hypotheses and conducted in-depth sensitivity and marginal analysis to evaluate optimal decisions under constraints such as budget and channels. Main work included verifying pricing and profit targets, quantifying the pull effect of product promotion, and setting entry/exit thresholds and early warning mechanisms for high-risk actions.
+  outcome: >-
+    Transformed team's macro strategies into testable hypotheses and conducted in-depth sensitivity and marginal analysis to evaluate optimal decisions under constraints such as budget and channels. Main work included verifying pricing and profit targets, quantifying the pull effect of product promotion, and setting entry/exit thresholds and early warning mechanisms for high-risk actions.
 
 - name: Business Elite Challenge
   year: 2024
   award: National First Prize
-  outcome: Demonstrated excellent business acumen and strategic thinking through comprehensive business simulation and case analysis, showcasing strong ability in business decision-making and team collaboration under competitive environments.
+  outcome: >-
+    Demonstrated excellent business acumen and strategic thinking through comprehensive business simulation and case analysis, showcasing strong ability in business decision-making and team collaboration under competitive environments.
