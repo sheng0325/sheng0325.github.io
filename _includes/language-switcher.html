@@ -15,11 +15,44 @@
 // 获取当前页面语言
 function getCurrentLanguage() {
   const path = window.location.pathname;
-
-  if (path === '/en/' || path.startsWith('/en/')) {
+  if (path.startsWith('/en/') || path === '/en') {
     return 'en';
   } else {
     return 'zh';
+  }
+}
+
+// 获取当前页面对应的另一种语言路径
+function getAlternateLanguagePath(targetLang) {
+  const path = window.location.pathname;
+  const currentLang = getCurrentLanguage();
+
+  if (currentLang === targetLang) {
+    return path; // 已经在目标语言，返回当前路径
+  }
+
+  if (currentLang === 'en' && targetLang === 'zh') {
+    // 英文 -> 中文
+    if (path === '/en/' || path === '/en') {
+      return '/';
+    } else if (path.startsWith('/en/projects')) {
+      return '/projects/';
+    } else if (path.startsWith('/en/competitions')) {
+      return '/competitions/';
+    } else {
+      return '/' + path.replace('/en/', '');
+    }
+  } else {
+    // 中文 -> 英文
+    if (path === '/' || path === '') {
+      return '/en/';
+    } else if (path.startsWith('/projects')) {
+      return '/en/projects/';
+    } else if (path.startsWith('/competitions')) {
+      return '/en/competitions/';
+    } else {
+      return '/en' + path;
+    }
   }
 }
 
@@ -39,21 +72,17 @@ function initLanguageButtons() {
 }
 
 // 切换语言
-function switchLanguage(lang) {
+function switchLanguage(targetLang) {
   const currentLang = getCurrentLanguage();
 
-  if (lang === currentLang) {
-    // 已经在当前语言，不跳转
+  if (targetLang === currentLang) {
+    // 已经在目标语言，不跳转
     return;
   }
 
-  if (lang === 'en') {
-    // 切换到英文
-    window.location.href = '/en/';
-  } else {
-    // 切换到中文
-    window.location.href = '/';
-  }
+  // 获取目标路径并跳转
+  const targetPath = getAlternateLanguagePath(targetLang);
+  window.location.href = targetPath;
 }
 
 // 页面加载时初始化
@@ -104,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
   background: transparent;
 }
 
-.lang-btn:hover {
+.lang-btn:hover:not(.active) {
   background: rgba(102, 8, 116, 0.1);
   transform: scale(1.05);
 }

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Language Switcher Test</title>
+</head>
+<body>
+  <h1>Language Switcher Test Page</h1>
+  <p>Current URL: <span id="current-url"></span></p>
+  <p>Detected Language: <span id="detected-lang"></span></p>
+
+  <div class="language-switcher-wrapper">
+    <div class="language-switcher">
+      <button class="lang-btn" id="lang-en" onclick="switchLanguage('en')">
+        <span class="lang-icon">🌐</span>
+        <span class="lang-text">EN</span>
+      </button>
+      <button class="lang-btn" id="lang-zh" onclick="switchLanguage('zh')">
+        <span class="lang-icon">🇨🇳</span>
+        <span class="lang-text">中文</span>
+      </button>
+    </div>
+  </div>
+
+  <div style="margin-top: 2rem;">
+    <h2>Test Links (Simulate different pages):</h2>
+    <ul>
+      <li><a href="?page=/">Home (Chinese)</a></li>
+      <li><a href="?page=/en/">Home (English)</a></li>
+      <li><a href="?page=/projects/">Projects (Chinese)</a></li>
+      <li><a href="?page=/en/projects/">Projects (English)</a></li>
+      <li><a href="?page=/competitions/">Competitions (Chinese)</a></li>
+      <li><a href="?page=/en/competitions/">Competitions (English)</a></li>
+    </ul>
+  </div>
+
+  <script>
+    // Get page from URL parameter for testing
+    const urlParams = new URLSearchParams(window.location.search);
+    const testPage = urlParams.get('page') || '/';
+
+    // 获取当前页面语言
+    function getCurrentLanguage() {
+      const path = testPage;
+      if (path.startsWith('/en/') || path === '/en') {
+        return 'en';
+      } else {
+        return 'zh';
+      }
+    }
+
+    // 获取当前页面对应的另一种语言路径
+    function getAlternateLanguagePath(targetLang) {
+      const path = testPage;
+      const currentLang = getCurrentLanguage();
+
+      if (currentLang === targetLang) {
+        return path; // 已经在目标语言，返回当前路径
+      }
+
+      if (currentLang === 'en' && targetLang === 'zh') {
+        // 英文 -> 中文
+        if (path === '/en/' || path === '/en') {
+          return '/';
+        } else if (path.startsWith('/en/projects')) {
+          return '/projects/';
+        } else if (path.startsWith('/en/competitions')) {
+          return '/competitions/';
+        } else {
+          return '/' + path.replace('/en/', '');
+        }
+      } else {
+        // 中文 -> 英文
+        if (path === '/' || path === '') {
+          return '/en/';
+        } else if (path.startsWith('/projects')) {
+          return '/en/projects/';
+        } else if (path.startsWith('/competitions')) {
+          return '/en/competitions/';
+        } else {
+          return '/en' + path;
+        }
+      }
+    }
+
+    // 初始化按钮状态
+    function initLanguageButtons() {
+      const currentLang = getCurrentLanguage();
+      const enBtn = document.getElementById('lang-en');
+      const zhBtn = document.getElementById('lang-zh');
+
+      document.getElementById('current-url').textContent = testPage;
+      document.getElementById('detected-lang').textContent = currentLang === 'en' ? 'English' : 'Chinese';
+
+      if (currentLang === 'en') {
+        enBtn.classList.add('active');
+        zhBtn.classList.remove('active');
+      } else {
+        zhBtn.classList.add('active');
+        enBtn.classList.remove('active');
+      }
+    }
+
+    // 切换语言
+    function switchLanguage(targetLang) {
+      const currentLang = getCurrentLanguage();
+
+      if (targetLang === currentLang) {
+        // 已经在目标语言，不跳转
+        alert('Already in ' + (targetLang === 'en' ? 'English' : 'Chinese') + '!');
+        return;
+      }
+
+      // 获取目标路径并显示
+      const targetPath = getAlternateLanguagePath(targetLang);
+      alert('Would navigate to: ' + targetPath + '\n\n(Currently in test mode - not actually navigating)');
+
+      // In production, use: window.location.href = targetPath;
+    }
+
+    // 页面加载时初始化
+    document.addEventListener('DOMContentLoaded', function() {
+      initLanguageButtons();
+    });
+  </script>
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    .language-switcher-wrapper {
+      position: relative;
+      display: inline-block;
+      margin: 2rem 0;
+    }
+
+    .language-switcher {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.6rem;
+      background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+      border-radius: 20px;
+      border: 1px solid #d8b4fe;
+      box-shadow: 0 2px 8px rgba(102, 8, 116, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .language-switcher:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 8, 116, 0.2);
+      border-color: #c084fc;
+    }
+
+    .lang-btn {
+      color: #660874;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.6rem;
+      border-radius: 14px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+    }
+
+    .lang-btn:hover:not(.active) {
+      background: rgba(102, 8, 116, 0.1);
+      transform: scale(1.05);
+    }
+
+    .lang-btn.active {
+      background: #660874;
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(102, 8, 116, 0.3);
+      cursor: default;
+    }
+
+    .lang-btn.active:hover {
+      transform: none;
+      background: #660874;
+    }
+
+    .lang-icon {
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .lang-text {
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    a {
+      color: #660874;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    #current-url, #detected-lang {
+      font-weight: bold;
+      color: #660874;
+    }
+  </style>
+</body>
+</html>
