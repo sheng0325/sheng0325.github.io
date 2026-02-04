@@ -1,102 +1,108 @@
 <div class="language-switcher-wrapper">
   <div class="language-switcher">
-    <button class="lang-btn" id="lang-en" onclick="switchLanguage('en')">
+    <a href="/en/" class="lang-btn" id="lang-en-link">
       <span class="lang-icon">🌐</span>
       <span class="lang-text">EN</span>
-    </button>
-    <button class="lang-btn" id="lang-zh" onclick="switchLanguage('zh')">
+    </a>
+    <a href="/" class="lang-btn" id="lang-zh-link">
       <span class="lang-icon">🇨🇳</span>
       <span class="lang-text">中文</span>
-    </button>
+    </a>
   </div>
 </div>
 
 <script>
-// 获取当前页面语言
-function getCurrentLanguage() {
-  const path = window.location.pathname;
-  if (path.startsWith('/en/') || path === '/en') {
-    return 'en';
-  } else {
-    return 'zh';
-  }
-}
+(function() {
+  'use strict';
 
-// 获取当前页面对应的另一种语言路径
-function getAlternateLanguagePath(targetLang) {
-  const path = window.location.pathname;
-  const currentLang = getCurrentLanguage();
-
-  if (currentLang === targetLang) {
-    return path; // 已经在目标语言，返回当前路径
-  }
-
-  if (currentLang === 'en' && targetLang === 'zh') {
-    // 英文 -> 中文
-    if (path === '/en/' || path === '/en') {
-      return '/';
-    } else if (path.startsWith('/en/projects')) {
-      return '/projects/';
-    } else if (path.startsWith('/en/competitions')) {
-      return '/competitions/';
+  // 获取当前页面语言
+  function getCurrentLanguage() {
+    const path = window.location.pathname;
+    if (path.startsWith('/en/') || path === '/en' || path.endsWith('/en/')) {
+      return 'en';
     } else {
-      return '/' + path.replace('/en/', '');
-    }
-  } else {
-    // 中文 -> 英文
-    if (path === '/' || path === '') {
-      return '/en/';
-    } else if (path.startsWith('/projects')) {
-      return '/en/projects/';
-    } else if (path.startsWith('/competitions')) {
-      return '/en/competitions/';
-    } else {
-      return '/en' + path;
+      return 'zh';
     }
   }
-}
 
-// 初始化按钮状态
-function initLanguageButtons() {
-  const currentLang = getCurrentLanguage();
-  const enBtn = document.getElementById('lang-en');
-  const zhBtn = document.getElementById('lang-zh');
+  // 获取当前页面在另一种语言中的对应路径
+  function getAlternatePath() {
+    const path = window.location.pathname;
+    const currentLang = getCurrentLanguage();
 
-  if (currentLang === 'en') {
-    enBtn.classList.add('active');
-    zhBtn.classList.remove('active');
+    // 移除末尾斜杠（如果有）
+    const cleanPath = path.endsWith('/') ? path.slice(0, -1) : path;
+
+    if (currentLang === 'en') {
+      // 英文 -> 中文
+      if (cleanPath === '/en' || cleanPath === '' || cleanPath === '/') {
+        return '/';
+      } else if (cleanPath.startsWith('/en/projects')) {
+        return '/projects/';
+      } else if (cleanPath.startsWith('/en/competitions')) {
+        return '/competitions/';
+      } else {
+        // 移除 /en 前缀
+        return cleanPath.replace('/en', '') || '/';
+      }
+    } else {
+      // 中文 -> 英文
+      if (cleanPath === '/' || cleanPath === '') {
+        return '/en/';
+      } else if (cleanPath.startsWith('/projects')) {
+        return '/en/projects/';
+      } else if (cleanPath.startsWith('/competitions')) {
+        return '/en/competitions/';
+      } else {
+        return '/en' + cleanPath;
+      }
+    }
+  }
+
+  // 初始化语言切换器
+  function initLanguageSwitcher() {
+    const currentLang = getCurrentLanguage();
+    const enLink = document.getElementById('lang-en-link');
+    const zhLink = document.getElementById('lang-zh-link');
+
+    if (!enLink || !zhLink) {
+      console.warn('Language switcher links not found');
+      return;
+    }
+
+    // 设置按钮状态
+    if (currentLang === 'en') {
+      enLink.classList.add('active');
+      zhLink.classList.remove('active');
+      // 英文页面时，中文按钮应该链接到对应的中文页面
+      zhLink.href = getAlternatePath();
+    } else {
+      zhLink.classList.add('active');
+      enLink.classList.remove('active');
+      // 中文页面时，英文按钮应该链接到对应的英文页面
+      enLink.href = getAlternatePath();
+    }
+
+    console.log('Language switcher initialized. Current language:', currentLang);
+    console.log('EN link:', enLink.href);
+    console.log('ZH link:', zhLink.href);
+  }
+
+  // 页面加载完成后立即初始化
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLanguageSwitcher);
   } else {
-    zhBtn.classList.add('active');
-    enBtn.classList.remove('active');
+    initLanguageSwitcher();
   }
-}
-
-// 切换语言
-function switchLanguage(targetLang) {
-  const currentLang = getCurrentLanguage();
-
-  if (targetLang === currentLang) {
-    // 已经在目标语言，不跳转
-    return;
-  }
-
-  // 获取目标路径并跳转
-  const targetPath = getAlternateLanguagePath(targetLang);
-  window.location.href = targetPath;
-}
-
-// 页面加载时初始化
-document.addEventListener('DOMContentLoaded', function() {
-  initLanguageButtons();
-});
+})();
 </script>
 
 <style>
 .language-switcher-wrapper {
   position: fixed;
-  top: 1.5rem;
+  top: 0.5rem;
   right: 2rem;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .language-switcher {
@@ -143,6 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
   color: #ffffff;
   box-shadow: 0 2px 6px rgba(102, 8, 116, 0.3);
   cursor: default;
+  pointer-events: none;
 }
 
 .lang-btn.active:hover {
@@ -163,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
 /* 移动端适配 */
 @media (max-width: 768px) {
   .language-switcher-wrapper {
-    top: 1rem;
+    top: 0.3rem;
     right: 1rem;
   }
 
