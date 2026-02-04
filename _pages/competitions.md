@@ -1,6 +1,9 @@
 ---
+layout: single
 permalink: /competitions/
 title: "荣誉奖项"
+author_profile: true
+lang: zh
 ---
 
 ## 比赛

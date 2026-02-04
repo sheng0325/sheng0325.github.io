@@ -24,7 +24,7 @@ On this website, I showcase my project experiences and competition achievements.
   </h3>
   <ul style="list-style: none; padding-left: 0; margin: 0;">
     <li style="margin-bottom: 1rem; color: #2d3748; line-height: 1.6;">
-      <strong style="color: #1a202c; font-weight: 600;">2016-2021</strong>: Chung Ling Private High School, Kuala Lumpur (High School)
+      <strong style="color: #1a202c; font-weight: 600;">2016-2021</strong>: Chong Hwa Independent High School, Kuala Lumpur (Secondary School)
     </li>
     <li style="color: #2d3748; line-height: 1.6;">
       <strong style="color: #1a202c; font-weight: 600;">2022-2026</strong>: Beijing Institute of Technology, Computer Science and Technology (Bachelor)

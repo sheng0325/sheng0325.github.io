@@ -1,20 +1,20 @@
 <div class="language-switcher-wrapper">
   <div class="language-switcher">
     {% if page.lang == 'en' %}
-      <a href="/" class="lang-btn" title="Switch to English">
+      <a href="/en/" class="lang-btn active" title="Current: English">
         <span class="lang-icon">🌐</span>
         <span class="lang-text">EN</span>
       </a>
-      <a href="/" class="lang-btn active" title="切换到中文">
+      <a href="/" class="lang-btn" title="切换到中文">
         <span class="lang-icon">🇨🇳</span>
         <span class="lang-text">中文</span>
       </a>
     {% else %}
-      <a href="/en/" class="lang-btn active" title="Switch to English">
+      <a href="/en/" class="lang-btn" title="Switch to English">
         <span class="lang-icon">🌐</span>
         <span class="lang-text">EN</span>
       </a>
-      <a href="/en/" class="lang-btn" title="切换到中文">
+      <a href="/" class="lang-btn active" title="当前：中文">
         <span class="lang-icon">🇨🇳</span>
         <span class="lang-text">中文</span>
       </a>

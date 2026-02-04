@@ -1,6 +1,9 @@
 ---
+layout: single
 permalink: /projects/
 title: "项目"
+author_profile: true
+lang: zh
 ---
 
 <div class="competition-grid">

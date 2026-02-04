@@ -2,6 +2,7 @@
 layout: single
 title: "个人信息"
 author_profile: true
+lang: zh
 ---
 
 {% include language-switcher.html %}
